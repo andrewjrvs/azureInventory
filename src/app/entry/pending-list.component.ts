@@ -27,10 +27,13 @@ export class PendingListComponent implements OnInit {
   }
 
   private update(itm: InventoryBase, product: OpenFoodFactProduct): InventoryBase {
-    const rtnInvItm = JSON.parse(JSON.stringify(itm));
+    const rtnInvItm = JSON.parse(JSON.stringify(itm)) as InventoryBase;
     rtnInvItm.brand_owner = product.brand_owner;
     rtnInvItm.image_url = product.image_url;
     rtnInvItm.product_name = product.product_name;
+    if (product.brands) {
+      rtnInvItm.brands = product.brands;
+    }
     return rtnInvItm;
   }
 

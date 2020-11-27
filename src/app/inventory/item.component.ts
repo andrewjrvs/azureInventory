@@ -105,9 +105,19 @@ export class ItemComponent implements OnInit {
     this.wrapperEl.nativeElement.style.marginLeft = '';
   }
 
+  public getBrand(): string {
+    if (this.item.brand_owner && this.item.brand_owner.toLowerCase() !== 'unknown') {
+      return this.item.brand_owner;
+    }
+    if (this.item.brands) {
+      return this.item.brands;
+    }
+    return 'Unknown';
+  }
+
   public getIcon(): string {
     let rtnValue = '🥫';
-    const compareNm = this.item.product_name.toLowerCase();
+    const compareNm = this.item.product_name && this.item.product_name.toLowerCase() || '';
     if (compareNm === '' ) {
       rtnValue = '❓';
 

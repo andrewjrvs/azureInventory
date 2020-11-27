@@ -20,6 +20,10 @@ const cleanUpProduct = (prd: OpenFoodFactBaseProduct): OpenFoodFactBaseProduct =
     if (prd.brands) {
         rtnObj.brands = prd.brands;
     }
+
+    if (!prd.branch_owner && prd.brands) {
+        prd.branch_owner = prd.brands;
+    }
     return rtnObj;
 };
 

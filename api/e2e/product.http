@@ -1,9 +1,9 @@
-GET http://localhost:7071/api/product/7340191400924
+GET http://localhost:7071/api/product/043000087275
 Cookie: tempkey=test; water=mellon;
 
 ###
 
-DELETE http://localhost:7071/api/product/7340191400924
+DELETE http://localhost:7071/api/product/043000087275
 Cookie: tempkey=test; water=mellon;
 
 ###

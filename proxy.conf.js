@@ -1,4 +1,4 @@
-const ROOT_URI = "https://localhost:8082";
+const ROOT_URI = " http://localhost:7071";
 // const API_ROOT_URI = "https://dev.goodville.com";
 // const API_IDCARDS_URI = "https://dev.goodville.com";
 
