@@ -35,3 +35,9 @@ Cookie: tempkey=test2; water=mellon;
     "code": "0040000539681",
     "__key": "040000539681"
 }
+
+### 
+GET http://localhost:7071/api/inventory/?pending
+Cookie: tempkey=test; water=mellon;
+
+###

@@ -11,8 +11,20 @@ const doesInvExist = { $or: [
     , {removed: false}
 ]};
 
-const getEntry = async (collection: Collection,  id: string): Promise<InventoryBase[]> => {
-    const query: {[key: string]: any} = Object.assign({}, doesInvExist);
+const getEntry = async (collection: Collection,  id: string, pending: boolean = false): Promise<InventoryBase[]> => {
+    const query: {[key: string]: any} = {};
+    if (pending) {
+        query.pending = true;
+        Object.assign(query, doesInvExist);
+    } else {
+        Object.assign(query, {$and: [
+            doesInvExist,
+            { $or: [
+                { pending: { $exists: false } }
+                , {pending: false}
+            ]}
+        ]});
+    }
     if (id) {
         query._id = id;
     }
@@ -81,6 +93,7 @@ const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): P
     let content: InventoryBase[] = null;
     let statusCode = 404;
     const isPurge = req.query.purge === 'true' ? true : false;
+    const isPending = typeof req.query.pending !== 'undefined' ? true : false;
     // attempt to look it up in the cache
     const body: InventoryBase = req.body;
 
@@ -89,7 +102,7 @@ const httpTrigger: AzureFunction = async (context: Context, req: HttpRequest): P
         try {
             switch (req.method) {
                 case 'GET':
-                    content = await getEntry(collection, id);
+                    content = await getEntry(collection, id, isPending);
                     break;
                 case 'DELETE':
                     const delSus = await removeEntry(collection, id, isPurge);
