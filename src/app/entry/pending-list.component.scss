@@ -1,0 +1,33 @@
+@use '../../style/variables' as defaults;
+$icon-width: 1em;
+
+:host {
+    display: block;
+    padding: 0 defaults.$gutter;
+}
+
+ul.pending-wrapper {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+  > li {
+    margin: 0;
+    padding: 1em 0 1em 0;
+    display: block;
+    display: grid;
+    grid-template-columns: auto ($icon-width + 1.2em);
+    
+    font-size: 18px;
+    
+    
+    .code {
+      display: block;
+      font-size: 1.4em;
+    }
+
+    + li {
+      border-top: solid black 1px;
+    }
+  }
+}

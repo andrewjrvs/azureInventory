@@ -1,0 +1,20 @@
+GET http://localhost:7071/api/product/7340191400924
+Cookie: tempkey=test; water=mellon;
+
+###
+
+DELETE http://localhost:7071/api/product/7340191400924
+Cookie: tempkey=test; water=mellon;
+
+###
+
+POST http://localhost:7071/api/product/7340191400924
+Cookie: tempkey=test; water=mellon;
+
+{
+  "categories": "WATERMELLON",
+  "code": "7340191400924",
+  "product_name": "Greendeli Falafelsallad med couscous",
+  "image_url": "https://static.openfoodfacts.org/images/products/734/019/140/0924/front_sv.4.400.jpg",
+  "brands": "Greendeli"
+}

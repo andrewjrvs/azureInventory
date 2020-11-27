@@ -1,0 +1,37 @@
+GET http://localhost:7071/api/inventory/
+Cookie: tempkey=test; water=mellon;
+
+###
+
+GET http://localhost:7071/api/inventory/78adf733-31d8-4d3a-b072-8625505be07e
+Cookie: tempkey=test; water=mellon;
+
+
+###
+
+DELETE http://localhost:7071/api/inventory/d6186fa1-9ae8-42fa-958b-bbeacaa008b9?purge=true
+Cookie: tempkey=test; water=mellon;
+
+###
+
+POST http://localhost:7071/api/inventory
+Cookie: tempkey=test; water=mellon;
+
+{
+    "product_name": "Milk chocolate bar with minis & peanuts chocolate candies, peanut",
+    "brand_owner": "Mars Chocolate North America LLC",
+    "code": "0040000539681",
+    "__key": "040000539681"
+}
+
+###
+
+PUT http://localhost:7071/api/inventory/78adf733-31d8-4d3a-b072-8625505be07e
+Cookie: tempkey=test2; water=mellon;
+
+{
+    "product_name": "My Candy2",
+    "brand_owner": "Mars Chocolate North America LLC",
+    "code": "0040000539681",
+    "__key": "040000539681"
+}

@@ -1,0 +1,6 @@
+<ul class="pending-wrapper">
+    <li *ngFor="let inv of (inventory | async) ">
+        <span class="code">{{inv.code}}</span>
+        <a href="javascript:void(0);"  data-action="refresh" title="refresh product" (click)="onRefresh(inv);">📖</a>
+    </li>
+</ul>

@@ -1,0 +1,10 @@
+<cvbn-nav-bar>
+  <cvbn-nav-item slot="item" routerLink="/" label="Home" icon="🏠"></cvbn-nav-item>
+  <cvbn-nav-item slot="item" routerLink="/inventory" label="Inventory" icon="🗃️"></cvbn-nav-item>
+  <cvbn-nav-item slot="item" routerLink="/entry" label="Entry" icon="📥"></cvbn-nav-item>
+  <cvbn-nav-item slot="item" routerLink="/entry/pending" label="Pending" icon="⏲"></cvbn-nav-item>
+  <cvbn-nav-item *ngIf="allowBack" slot="end-item" (click)="onBack();" label="back" icon="⬅️"></cvbn-nav-item>
+</cvbn-nav-bar>
+<main>
+  <router-outlet></router-outlet>
+</main>
