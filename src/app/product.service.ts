@@ -17,6 +17,9 @@ export class ProductService {
     .pipe(catchError((error: HttpErrorResponse) => {
       if (error.status === 404) {
         return of(null);
+      } else {
+        console.error(error);
+        alert(`failed: ${error.message}`);
       }
       throw error;
     }))

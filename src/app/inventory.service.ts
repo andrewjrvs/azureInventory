@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, interval, Observable } from 'rxjs';
-import { first, shareReplay, switchMapTo, tap, map, filter } from 'rxjs/operators';
+import { BehaviorSubject, interval, Observable, of } from 'rxjs';
+import { first, shareReplay, switchMapTo, tap, map, filter, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.defaults';
 import { InventoryBase } from './models/InventoryBase';
 import { OpenFoodFactProduct } from './models/OpenFoodFactProduct';
@@ -35,6 +35,11 @@ export class InventoryService {
     if (!this.shared$) {
       this.shared$ = this.refreshNeeded$.pipe(
         switchMapTo(this.http.get<InventoryBase[]>(environment.urls.inventory.replace('{key}', ''))),
+        catchError(error => {
+          console.error(error);
+          alert(`failed: ${error.message}`);
+          return of(null as InventoryBase[]);
+        }),
         shareReplay(1)
       );
     }
